@@ -1,0 +1,14 @@
+site_name: Sample Documents
+docs_dir: ../docs
+site_dir: ../build/docs
+theme:
+  name: material
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          paths:
+            - ../src
+          rendering:
+            show_source: true

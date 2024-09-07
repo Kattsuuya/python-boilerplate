@@ -1,0 +1,87 @@
+[tool.taskipy.tasks]
+lint = { cmd = "ruff check --config ./config/ruff.toml", help = "コードスタイルを確認する" }
+lint-fix = { cmd = "ruff check --fix --config ./config/ruff.toml", help = "コードスタイルの問題を修正する" }
+format = { cmd = "ruff format --config ./config/ruff.toml", help = "コードをフォーマットする" }
+test = { cmd = "pytest -vv", help = "すべての単体テストを実行する" }
+build-doc = { cmd = "mkdocs build --config-file ./config/mkdocs.yml", help = "ドキュメントをビルドする" }
+serve-doc = { cmd = "mkdocs serve --config-file ./config/mkdocs.yml", help = "ローカルサーバーでドキュメントを閲覧する" }
+commit = { cmd = "cz commit", help = "コミットを作成する" }
+
+[project]
+name = "python-boilerplate"
+version = "0.1.0"
+description = "This repository is a boilerplate that includes a collection of libraries for creating command-line applications in Python."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "pydantic-settings==2.4.0",
+    "python-dotenv==1.0.1",
+    "typer==0.12.5",
+    "mkdocs==1.6.1",
+    "mkdocs-material==9.5.34",
+    "mkdocstrings[python]==0.25.2",
+    "httpx==0.27.2",
+    "orjson==3.10.7",
+    "ruff==0.6.3",
+    "mypy==1.11.2",
+    "pytest==8.3.2",
+    "taskipy==1.13.0",
+    "pre-commit==3.8.0",
+    "commitizen==3.29.0",
+]
+
+[tool.mypy]
+python_version = "3.12"
+warn_return_any = true
+warn_unused_configs = true
+
+[tool.commitizen]
+name = "cz_customize"
+
+[tool.commitizen.customize]
+message_template = "{{change_type}}:{% if ticket %} refs {{ticket}}{% endif %} {{title}}{% if body %}\n\n{{body}}\n{% endif %}"
+example = """✨ feat: refs #123456 hogeを追加
+
+- fooをbarに変更
+"""
+schema = """<type>: refs <ticket> <title>
+
+<body>"""
+
+# コミットメッセージを作成するための1つ目の質問
+[[tool.commitizen.customize.questions]]
+type = "list"
+name = "change_type"
+message = "コミットの種類を選択してください"
+choices = [
+    { value = "✨ feat", name = "✨ feat:     機能追加、更新、削除" },
+    { value = "🐛 fix", name = "🐛 fix:      バグ修正" },
+    { value = "📝 docs", name = "📝 docs:     ドキュメントやコメントの追加" },
+    { value = "🎨 style", name = "🎨 style:    プログラムの動きに影響のない変更、フォーマッターの適用" },
+    { value = "♻️  refactor", name = "♻️  refactor: リファクタリング" },
+    { value = "✅ test", name = "✅ test:     テストの追加、更新、削除" },
+    { value = "⚡️ perf", name = "⚡️ perf:     性能改善" },
+    { value = "👷 build", name = "👷 build:    ビルド設定の変更" },
+    { value = "💚 ci", name = "💚 ci:       CI設定の変更" },
+    { value = "🚧 wip", name = "🚧 wip:      作業途中" },
+    { value = "🧹 chore", name = "🧹 chore:    設定関連の変更" },
+]
+
+# コミットメッセージを作成するための2つ目の質問
+[[tool.commitizen.customize.questions]]
+type = "input"
+name = "ticket"
+message = "関連するチケット番号を記述してください (例: #123456) (Press Enter to skip)"
+
+# コミットメッセージを作成するための3つ目の質問
+[[tool.commitizen.customize.questions]]
+type = "input"
+name = "title"
+message = "変更内容を簡潔に記述してください (例: hogeを追加)"
+
+# コミットメッセージを作成するための4つ目の質問
+[[tool.commitizen.customize.questions]]
+type = "input"
+name = "body"
+message = "補足説明がある場合は記述してください (例: - fooをbarに変更) (Press Enter to skip)"
+multiline = true

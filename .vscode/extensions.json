@@ -1,0 +1,26 @@
+{
+  "recommendations": [
+    "njpwerner.autodocstring",
+    "mikestead.dotenv",
+    "tamasfe.even-better-toml",
+    "mhutchie.git-graph",
+    "oderwat.indent-rainbow",
+    "visualstudioexptteam.vscodeintellicode",
+    "ms-ceintl.vscode-language-pack-ja",
+    "ms-vsliveshare.vsliveshare",
+    "yzhang.markdown-all-in-one",
+    "shd101wyy.markdown-preview-enhanced",
+    "bierner.markdown-preview-github-styles",
+    "davidanson.vscode-markdownlint",
+    "ms-python.mypy-type-checker",
+    "ms-python.vscode-pylance",
+    "ms-python.python",
+    "ms-python.debugpy",
+    "charliermarsh.ruff",
+    "sonarsource.sonarlint-vscode",
+    "wayou.vscode-todo-highlight",
+    "gruntfuggly.todo-tree",
+    "shardulm94.trailing-spaces",
+    "redhat.vscode-yaml"
+  ]
+}

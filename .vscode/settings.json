@@ -1,0 +1,4 @@
+{
+  "mypy-type-checker.importStrategy": "fromEnvironment",
+  "python.analysis.extraPaths": ["./src"]
+}
